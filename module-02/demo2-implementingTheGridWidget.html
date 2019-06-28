@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kendo UI: Implementing the Grid Widget</title>
+
+    <link rel="stylesheet" type="text/css" href="../content/kendo.common.css">
+    <link rel="stylesheet" type="text/css" href="../content/kendo.default.css">
+
+    <script type="text/javascript" src="../scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/kendo.web.js"></script>
+
+  </head>
+  <body>
+    <div id="cars"></div>
+    <script>
+      $(function () {
+          var cars = [
+              { year: "2012", make: "Ferrari", model: "California" },
+              { year: "2012", make: "Ferrari", model: "458 Italia" },
+              { year: "2012", make: "Lambordhini", model: "Aventador" },
+              { year: "2012", make: "Lambordhini", model: "Gallardo LP-570" },
+              { year: "2012", make: "Porsche", model: "911 GT3" },
+              { year: "2012", make: "McLaren", model: "MP14-12C" },
+              { year: "2012", make: "Koenigsegg", model: "CCX" },
+              { year: "1971", make: "Plymouth", model: "(Hemi) Barracuda" },
+              { year: "1967", make: "Ford", model: "Shelby Mustang GT500" },
+              { year: "1972", make: "Jaguar", model: "E-Type" }
+          ];
+
+          var carsDataSource = new kendo.data.DataSource({
+              data: cars,
+              pageSize: 5,
+              sort: { field: "year", dir: "asc" }
+          });
+          $("#cars").kendoGrid({
+              dataSource: carsDataSource,
+              columns: [
+                  {
+                      field: "year",
+                      title: "Year"
+                  },
+                  {
+                      field: "make",
+                      title: "Make"
+                  },
+                  {
+                      field: "model",
+                      title: "Model"
+                  },
+                  {
+                      command: [ "edit", "destroy" ]
+                  }
+              ],
+              scrollable: false,
+              pageable: true,
+              sortable: true,
+              groupable: true,
+              filterable: true,
+              editable: "inline"
+          });
+      });
+    </script>
+  </body>
+</html>

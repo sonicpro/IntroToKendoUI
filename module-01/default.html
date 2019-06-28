@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Adding Kendo UI to a Web Page</title>
+
+    <link rel="stylesheet" type="text/css" href="../content/kendo.common.css">
+    <link rel="stylesheet" type="text/css" href="../content/kendo.default.css">
+
+    <script type="text/javascript" src="../scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/kendo.web.js"></script>
+
+    <script type="text/javascript">
+      $(function () {
+          $("#pickDate").kendoDatePicker();
+
+          var sizePicker = $("#sizePicker");
+          kendo.init(sizePicker);
+          sizePicker.bind("change", onSizeChange);
+      });
+
+      function onSizeChange(e) {
+          alert("Size Change");
+      }
+    </script>
+  </head>
+  <body>
+    <span>Pick a Date:
+      <div>
+        <input id="pickDate" type="text" />
+      </div>
+      <div>
+        <!-- Some event binding from the chapter 2. -->
+        <input id="sizePicker" data-role="combobox" data-source='["Small", "Large"]' />
+      </div>
+    </span>
+  </body>
+</html>
