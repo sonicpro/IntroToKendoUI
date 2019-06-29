@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kendo UI: Template</title>
+
+    <link rel="stylesheet" type="text/css" href="../content/kendo.common.css">
+    <link rel="stylesheet" type="text/css" href="../content/kendo.default.css">
+
+    <script type="text/javascript" src="../scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/kendo.web.js"></script>
+
+  </head>
+  <body>
+    <script type="text/x-kendo-template" id="template">
+      <h1>#= listName #</h1>
+      <ul>
+        # for (var i = 0, len = cars.length; i < len; i++) { #
+            <li>#= cars[i]["year"] + " " + cars[i]["make"] + " - " + cars[i]["model"] #</li>
+        # } #                                                 
+      </ul>
+    </script>
+
+    <div id="container">
+
+    <script>
+      $(function () {
+
+          var data = {
+              listName: "My Dream Cars",
+              cars: [
+                  { year: 2012, make: "Ferrari", model: "458 Italia" },
+                  { year: 2012, make: "Lamborghini", model: "Gallardo LP-570" }
+              ]
+          };
+
+          var listTemplate = kendo.template($("#template").html());
+          $("#container").html(listTemplate(data));
+      });
+    </script>
+  </body>
+</html>
